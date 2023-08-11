@@ -1,0 +1,90 @@
+@import url(./variables.css);
+
+/*======BASE STYLES======*/
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    background-color:var(--background-color);
+    display:grid;
+    height:100vh;
+    grid-auto-rows:15vh; 
+    grid-template-areas:
+    "header header"
+    "main main"
+    "main main"
+    "main main"
+    "main main"
+    "main main"
+    "footer footer"
+}
+
+/*======HEADER STYLES======*/
+
+header{
+    background-color:var(--foreground-color);
+    display:grid;
+    grid-area:header;
+    grid-template-columns:2fr 3fr;
+}
+
+nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.hamburger-menu{
+    display:flex;
+    flex-direction:column;   
+    row-gap:15px;
+}
+
+.hamburger-menu::after,
+.hamburger-menu::before,
+.hamburger-menu input{
+    background-color:var(--background-color);
+    border-radius:1000px;
+    content:"";
+    height:19px;
+    transition-property:opacity, width, rotation;
+    transition-duration:200ms;
+    width:130px;
+}
+
+.hamburger-menu input{
+    appearance:none;
+}
+
+.hamburger-menu > input:checked{
+    opacity:0;
+    width:0;
+}
+
+.hamburger-menu:has(input:checked)::after{
+    transform-origin:left center;
+    width:96px;
+    rotate:-45deg;
+}
+
+.hamburger-menu:has(input:checked)::before{
+    transform-origin:left center;
+    width:96px;
+    rotate:45deg;
+}
+
+
+
+/*======MAIN STYLES======*/
+main{
+    grid-area:main;  
+}
+
+
+/*======FOOTER STYLES======*/
+footer{
+    grid-area:footer;
+}
