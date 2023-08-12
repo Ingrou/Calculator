@@ -11,7 +11,7 @@ body{
     background-color:var(--background-color);
     display:grid;
     height:100vh;
-    grid-auto-rows:15vh; 
+    grid-auto-rows:125px auto 100px; 
     grid-template-areas:
     "header header"
     "main main"
@@ -31,16 +31,15 @@ header{
     grid-template-columns:2fr 3fr;
 }
 
-nav{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
 
 .hamburger-menu{
     display:flex;
-    flex-direction:column;   
+    flex-direction:column;  
+    left:25px; 
+    position:absolute;
     row-gap:15px;
+    top:15px;  
+    z-index:2;
 }
 
 .hamburger-menu::after,
@@ -76,11 +75,47 @@ nav{
     rotate:45deg;
 }
 
+.sidebar{
+    background-color:var(--navbar-color);
+    height:100vh;
+    transition-property:width;
+    transition-duration:200ms;
+    width:0%;
+}
 
+.menu-links{
+    color:var(--foreground-color);
+    display:flex;
+    flex-direction:column;
+    font-family:monospace;
+    font-size:2.5rem;
+    padding-top:125px;
+} 
+
+.menu-links a{
+    border-top:1px solid var(--foreground-color);
+    padding-top:25px;
+    padding-bottom:25px;
+}
+
+.menu-links:last-child{
+    border-bottom:1px solid var(--foreground-color);
+}
+
+.hamburger-menu:has(input:checked) + .sidebar{
+    width:75vw;
+}
+
+.hamburger-menu:has(input:not(:checked)) + .sidebar > .menu-links{
+    display:none;
+
+}
 
 /*======MAIN STYLES======*/
 main{
-    grid-area:main;  
+    grid-area:main;  .hamburger-menu:has(input:checked) + .sidebar > p{
+        display:none;
+    }
 }
 
 
