@@ -19,7 +19,7 @@ body{
     "main main"
     "main main"
     "main main"
-    "footer footer"
+    "footer footer";
 }
 
 /*======HEADER STYLES======*/
@@ -39,7 +39,7 @@ header{
     position:absolute;
     row-gap:15px;
     top:15px;  
-    z-index:2;
+    z-index:3;
 }
 
 .hamburger-menu::after,
@@ -80,6 +80,7 @@ header{
     height:100vh;
     transition-property:width;
     transition-duration:200ms;
+    position:relative;
     width:0%;
 }
 
@@ -88,14 +89,16 @@ header{
     display:flex;
     flex-direction:column;
     font-family:monospace;
-    font-size:2.5rem;
-    padding-top:125px;
+    font-size:2rem;
+    padding-top:125px; 
+    width:100%;
 } 
 
 .menu-links a{
     border-top:1px solid var(--foreground-color);
-    padding-top:25px;
     padding-bottom:25px;
+    padding-top:25px;
+    padding-left:10px;
 }
 
 .menu-links:last-child{
@@ -108,16 +111,126 @@ header{
 
 .hamburger-menu:has(input:not(:checked)) + .sidebar > .menu-links{
     display:none;
-
 }
 
 /*======MAIN STYLES======*/
 main{
-    grid-area:main;  .hamburger-menu:has(input:checked) + .sidebar > p{
-        display:none;
-    }
+    grid-area:main;  
+    display:flex;
+    justify-content:center;
 }
 
+.calculator{
+    display:grid;
+    height:100%;
+    grid-template-rows:2fr 7fr;
+    width:95%;
+}
+
+.results{
+    background-color:whitesmoke;
+    border-radius:20px;
+    margin:20px 10px;
+}
+
+.buttons{
+    display:grid;
+    grid-auto-rows:70px;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows:repeat(5,1fr);
+    row-gap:15px;
+}
+
+button{
+    aspect-ratio:1/1;
+    border-radius:20px;
+    font-family:monospace;
+    font-size:400%;
+    font-weight:900;
+    width:95%;
+}
+
+/*OPERATION-BUTTONS*/
+.clear-button{
+    grid-column:1/2;
+    grid-row:1/2;
+}
+.undo-button{
+    grid-column:2/3;
+    grid-row:1/2;
+}
+.percentage-button{
+    grid-column:3/4;
+    grid-row:1/2;
+}
+.divide-button{
+    grid-column:4/5;
+    grid-row:1/2;
+}
+.multiply-button{
+    grid-column:4/5;
+    grid-row:2/3;
+}
+.subs-button{
+    grid-column:4/5;
+    grid-row:3/4;
+}
+.sum-button{
+    grid-column:4/5;
+    grid-row:4/5;
+}
+/*NUMBER-BUTTONS*/
+.one-sign{
+    grid-column:1/2;
+    grid-row:2/3;
+}
+.two-sign{
+    grid-column:2/3;
+    grid-row:2/3;
+}
+.three-sign{
+    grid-column:3/4;
+    grid-row:2/3;
+}
+.four-sign{
+    grid-column:1/2;
+    grid-row:3/4;
+}
+.five-sign{
+    grid-column:2/3;
+    grid-row:3/4;
+}
+.six-sign{
+    grid-column:3/4;
+    grid-row:3/4;
+}
+.seven-sign{
+    grid-column:1/2;
+    grid-row:4/5;
+}
+.eight-sign{
+    grid-column:2/3;
+    grid-row:4/5;
+}
+.nine-sign{
+    grid-column:3/4;
+    grid-row:4/5;
+}
+.zero-sign{
+    aspect-ratio:2 / 1;
+    grid-column:1/3;
+    grid-row:5/6;
+}
+/*OTHER-BUTTONS*/
+.semi-button{
+    grid-column:3/4;
+    grid-row:5/6;
+}
+
+.equal-sign{
+    grid-column:4/5;
+    grid-row:5/6;
+}
 
 /*======FOOTER STYLES======*/
 footer{
