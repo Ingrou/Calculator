@@ -234,5 +234,17 @@ button{
 
 /*======FOOTER STYLES======*/
 footer{
+    align-items:center;
+    background-color:var(--footer-color);
+    display:flex;
+    justify-content:center;
     grid-area:footer;
+    margin-top:20px;
+}
+
+.footer-info{
+    color:whitesmoke;
+    font-family:monospace;
+    font-size:1.5rem;
+    font-weight:900;
 }
