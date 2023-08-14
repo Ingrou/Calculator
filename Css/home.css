@@ -75,11 +75,15 @@ header{
     rotate:45deg;
 }
 
+nav:has(input:checked){
+    position:fixed;
+}
+
 .sidebar{
     background-color:var(--navbar-color);
-    height:100vh;
     transition-property:width;
     transition-duration:200ms;
+    height:100vh;
     position:relative;
     width:0%;
 }
@@ -130,7 +134,7 @@ main{
 .results{
     background-color:whitesmoke;
     border-radius:20px;
-    margin:20px 10px;
+    margin:15px 3px;
 }
 
 .buttons{
