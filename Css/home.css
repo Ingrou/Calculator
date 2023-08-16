@@ -75,11 +75,15 @@ header{
     rotate:45deg;
 }
 
+nav:has(input:checked){
+    position:fixed;
+}
+
 .sidebar{
     background-color:var(--navbar-color);
-    height:100vh;
     transition-property:width;
     transition-duration:200ms;
+    height:100vh;
     position:relative;
     width:0%;
 }
@@ -88,7 +92,7 @@ header{
     color:var(--foreground-color);
     display:flex;
     flex-direction:column;
-    font-family:monospace;
+    font-family:var(--main-font-style);
     font-size:2rem;
     padding-top:125px; 
     width:100%;
@@ -128,9 +132,19 @@ main{
 }
 
 .results{
+    align-items:flex-end;
     background-color:whitesmoke;
     border-radius:20px;
-    margin:20px 10px;
+    display:flex;
+    justify-content:flex-end;
+    margin:15px 3px;
+    padding:5px 15px;
+}
+
+.results__write-space{
+    font-family:var(--main-font-style);
+    font-size:3rem;
+    font-weight:600;
 }
 
 .buttons{
@@ -144,7 +158,7 @@ main{
 button{
     aspect-ratio:1/1;
     border-radius:20px;
-    font-family:monospace;
+    font-family:var(--main-font-style);
     font-size:400%;
     font-weight:900;
     width:95%;
@@ -234,5 +248,17 @@ button{
 
 /*======FOOTER STYLES======*/
 footer{
+    align-items:center;
+    background-color:var(--footer-color);
+    display:flex;
+    justify-content:center;
     grid-area:footer;
+    margin-top:20px;
+}
+
+.footer-info{
+    color:whitesmoke;
+    font-family:var(--main-font-style);
+    font-size:1.5rem;
+    font-weight:900;
 }

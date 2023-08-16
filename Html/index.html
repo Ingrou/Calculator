@@ -30,38 +30,41 @@
     </header>
     <main>
         <section class="calculator">
-            <section class="results"></section>
+            <section class="results">
+                <p class="results__write-space">0</p>
+            </section>
             <section class="buttons">
                 <!--Numbers-->
-                <button class="one-sign">1</button>
-                <button class="two-sign">2</button>
-                <button class="three-sign">3</button>
-                <button class="four-sign">4</button>
-                <button class="five-sign">5</button>
-                <button class="six-sign">6</button>
-                <button class="seven-sign">7</button>
-                <button class="eight-sign">8</button>
-                <button class="nine-sign">9</button>
-                <button class="zero-sign">0</button>
+                <button class="one-sign --numberSign">1</button>
+                <button class="two-sign --numberSign">2</button>
+                <button class="three-sign --numberSign">3</button>
+                <button class="four-sign --numberSign">4</button>
+                <button class="five-sign --numberSign">5</button>
+                <button class="six-sign --numberSign">6</button>
+                <button class="seven-sign --numberSign">7</button>
+                <button class="eight-sign --numberSign">8</button>
+                <button class="nine-sign --numberSign">9</button>
+                <button class="zero-sign --numberSign">0</button>
                 <!--Manual buttons-->
-                <button class="clear-button">C</button>
-                <button class="undo-button">X</button>
+                <button class="clear-button --systemSign">C</button>
+                <button class="undo-button --systemSing">X</button>
+                <button class="equal-sign --systemSign">=</button>
                 <!--Operators-->
-                <button class="percentage-button">%</button>
-                <button class="divide-button">:</button>
-                <button class="multiply-button">*</button>
-                <button class="subs-button">-</button>
-                <button class="sum-button">+</button>
-                <!--Other buttons-->
-                <button class="semi-button">,</button>
-                <button class="equal-sign">=</button>
+                <button class="percentage-button --operatorSign">%</button>
+                <button class="divide-button --operatorSign">:</button>
+                <button class="multiply-button --operatorSign">*</button>
+                <button class="subs-button --operatorSign">-</button>
+                <button class="sum-button --operatorSign">+</button>
+                <!--Char buttons-->
+                <button class="semi-button --charSign">,</button>
             </section>
         </section>
     </main>
     <footer>
-
+        <p class="footer-info">developers.apple.org</p>
     </footer>
-
+    
+    <script type="module" src="../JavaScript/functions.js"></script>
     <script type="module" src="../JavaScript/main.js"></script>
 </body>
 </html>
