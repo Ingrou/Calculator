@@ -15,7 +15,7 @@ function changeToNumArr(numbers)
         return previousValue + currentValue;
     });
 
-    array.push(parseInt(value));
+    array.push(parseFloat(value));
   }
   return array;
 }
@@ -46,6 +46,7 @@ function mergeArrays(numbers, operators)
 
 function sumFunc(numberOne, numberTwo)
 {
+  console.log(numberOne, numberTwo);
   return numberOne + numberTwo;
 }
 
@@ -80,7 +81,6 @@ export function doMath(numbers, operators)
   let operatorRef = 1;
   let numberVal = null;
   let operatorVal = null;
-  let result = arrayToMath;
   let i = 0;
 
   while(i < arrayToMath.length)
@@ -115,5 +115,5 @@ export function doMath(numbers, operators)
     i++;
   }
 
-  return result;
+  return arrayToMath;
 }
