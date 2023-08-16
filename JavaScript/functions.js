@@ -47,28 +47,35 @@ function mergeArrays(numbers, operators)
 function sumFunc(numberOne, numberTwo)
 {
   console.log(numberOne, numberTwo);
-  return numberOne + numberTwo;
+  return parseFloat((numberOne + numberTwo).toFixed(2));
 }
 
 function subsFunc(numberOne, numberTwo)
 {
-  return numberOne - numberTwo;
+  return parseFloat((numberOne - numberTwo).toFixed(2));
 }
 
 function divFunc(numberOne, numberTwo)
 {
-  return numberOne / numberTwo;
+  if(numberTwo == 0)
+  {
+    throw "You can't divide by zero";
+  }
+  else
+  {
+    return parseFloat((numberOne / numberTwo).toFixed(2));
+  }
 }
 
 function multiFunc(numberOne, numberTwo)
 {
-  return numberOne * numberTwo;
+  return parseFloat((numberOne * numberTwo).toFixed(2));
 }
 
 //5 from 10 equal 50 percent
 function percentFunc(numberOne, numberTwo)
 {
-  return (numberOne * 100) / numberTwo;
+  return parseFloat(((numberOne * 100) / numberTwo).toFixed(2));
 }
 
 export function doMath(numbers, operators)
@@ -77,10 +84,8 @@ export function doMath(numbers, operators)
   const operatorsArr = changeToOperatorsArr(operators);
   let arrayToMath = mergeArrays(numbersArr, operatorsArr);
 
-  let numberRef = 0;
-  let operatorRef = 1;
-  let numberVal = null;
-  let operatorVal = null;
+  let numberRef = 0, operatorRef = 1;
+  let numberVal = null, operatorVal = null;
   let i = 0;
 
   while(i < arrayToMath.length)
@@ -88,27 +93,32 @@ export function doMath(numbers, operators)
     numberVal = arrayToMath[numberRef];
     operatorVal = arrayToMath[operatorRef];
 
-    if(operatorVal == "+")
+    switch(operatorVal)
     {
-      arrayToMath[numberRef + 2] = sumFunc(numberVal, arrayToMath[numberRef + 2]);
-    }
-    else if(operatorVal == "-")
-    {
-      arrayToMath[numberRef + 2] = subsFunc(numberVal, arrayToMath[numberRef + 2])
-    }
-    else if(operatorVal == ":")
-    {
-      arrayToMath[numberRef + 2] = divFunc(numberVal, arrayToMath[numberRef + 2]);
-    }
-    else if(operatorVal == "*")
-    {
-      arrayToMath[numberRef + 2] = multiFunc(numberVal, arrayToMath[numberRef + 2]);
-    }
-    else if(operatorVal == "%")
-    {
-      arrayToMath[numberRef + 2] = percentFunc(numberVal, arrayToMath[numberRef + 2]);
-    }
-
+      case "+":
+        arrayToMath[numberRef + 2] = sumFunc(numberVal, arrayToMath[numberRef + 2]);
+        break;
+      case "-":
+        arrayToMath[numberRef + 2] = subsFunc(numberVal, arrayToMath[numberRef + 2]);
+        break;
+      case ":":
+        try
+        {
+          arrayToMath[numberRef + 2] = divFunc(numberVal, arrayToMath[numberRef + 2]);
+        }
+        catch(error)
+        {
+          console.log(error);
+          arrayToMath.pop();
+        }
+        break;
+      case "*":
+        arrayToMath[numberRef + 2] = multiFunc(numberVal, arrayToMath[numberRef + 2]);
+        break;
+      case "%":
+        arrayToMath[numberRef + 2] = percentFunc(numberVal, arrayToMath[numberRef + 2]);
+        break;
+    };
 
     numberRef++;
     operatorRef++;

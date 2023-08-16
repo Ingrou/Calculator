@@ -1,12 +1,10 @@
 import {addEventAll, doMath} from "./functions.js";
 
-const numberArray = [new Array];
-const operatorsArray = [];
-let operatorsCount = 0;
-let numbersCount = 0;
-let numberArrayCount = 1;
-let operatorsArrayCount = 0;
-let semiFirst = false;
+const numberArray = [new Array], operatorsArray = new Array;
+let operatorsCount = 0, numbersCount = 0;
+let numberArrayCount = 1, operatorsArrayCount = 0;
+
+let semiFirst = false, minusFirst = false;
 let semiMemory = 0;
 
 
@@ -14,7 +12,23 @@ function addToCorrectArray(element)
 {
   let elementClassSecondPart = element.className.split(" ")[1];
 
-  if(elementClassSecondPart == "--numberSign" && semiFirst == false)
+  if(numbersCount == 0 && element.innerText == "-" || minusFirst == true  && elementClassSecondPart == "--numberSign")
+  {
+    if(minusFirst == false)
+    {
+      numberArray[numberArrayCount - 1] = ["-"];
+      minusFirst = true;
+      console.log(numberArray);
+    }
+    else if(minusFirst == true)
+    {
+      numberArray[numberArrayCount - 1][0] += (element.innerText);
+      numbersCount++;
+      minusFirst = false;
+      console.log(numberArray);
+    }
+  }
+  else if((elementClassSecondPart == "--numberSign" && semiFirst == false))
   {
     if(numberArrayCount == operatorsArrayCount)
     {
@@ -25,16 +39,13 @@ function addToCorrectArray(element)
     numbersCount++;
     console.log(numberArray);
   }
-  else if(elementClassSecondPart == "--operatorSign")
+  else if(elementClassSecondPart == "--operatorSign" && operatorsArrayCount < numberArrayCount && numbersCount > 0)
   {
-    if(operatorsArrayCount < numberArrayCount)
-    {
-      operatorsArray.push(new Array);
-      operatorsArrayCount++;
-      operatorsArray[operatorsArrayCount - 1].push(element.innerText);
-      operatorsCount++;
-      console.log(numberArray);
-    }
+    operatorsArray.push(new Array);
+    operatorsArrayCount++;
+    operatorsArray[operatorsArrayCount - 1].push(element.innerText);
+    operatorsCount++;
+    console.log(operatorsArray);
   }
   else if(elementClassSecondPart == "--charSign" || semiFirst == true)
   {
@@ -46,10 +57,10 @@ function addToCorrectArray(element)
     else if(semiFirst == true)
     {
       numberArray[numberArrayCount -1] = [ parseFloat(semiMemory + '.' + element.innerText) ];
+      numbersCount++;
       semiFirst = false;
       console.log(numberArray);
     }
-    
   }
 }
 
