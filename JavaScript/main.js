@@ -1,9 +1,8 @@
-import {addEventAll, doMath} from "./functions.js";
+import {addEventAll, doMath, mergeArrays} from "./functions.js";
 
-const numberArray = [new Array], operatorsArray = new Array;
+let numberArray = [new Array], operatorsArray = new Array;
 let operatorsCount = 0, numbersCount = 0;
 let numberArrayCount = 1, operatorsArrayCount = 0;
-
 let semiFirst = false, minusFirst = false;
 let semiMemory = 0;
 
@@ -64,25 +63,35 @@ function addToCorrectArray(element)
   }
 }
 
+// TODO: MAKE VALUE DISPLAY ON WRIEAREA
+const writeArea = document.querySelectorAll("p")[1];
+const exprWriteArea = document.querySelectorAll("p")[0];
 
-const wirteArea = document.querySelector("p");
 
 const buttons = addEventAll("button", "click", function(){
-
   if(this.innerText == "=")
   {
     let result = doMath(numberArray, operatorsArray);
-    console.log(result);
+    writeArea.innerText = result[result.length - 1];
+    exprWriteArea.innerText = mergeArrays(numberArray, operatorsArray).flat().join("");
+
+    
+    numberArray[numberArrayCount - 1] = [result[result.length - 1]];
+
+    numberArray.shift();
+    numberArrayCount--;
+    operatorsArray.shift();
+    operatorsArrayCount--;
+    console.log("Number array",numberArray);
   }
   else
   {
     addToCorrectArray(this);
+    writeArea.innerText = mergeArrays(numberArray, operatorsArray).flat().join("");
+
+    console.log(operatorsArray);
   }
 });
-
-
-
-
 
 
 
