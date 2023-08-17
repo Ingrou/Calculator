@@ -139,12 +139,23 @@ main{
     justify-content:flex-end;
     margin:15px 3px;
     padding:5px 15px;
+    position:relative;
 }
 
 .results__write-space{
     font-family:var(--main-font-style);
     font-size:3rem;
     font-weight:600;
+}
+
+.last-expr{
+    font-family:monospace;
+    font-size:1.8rem;
+    font-weight:900;
+    opacity:0.5;
+    left:30px;
+    bottom:60px;
+    position:absolute;
 }
 
 .buttons{

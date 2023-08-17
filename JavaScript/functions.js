@@ -5,6 +5,7 @@ export function addEventAll(handler, event, callback)
   });
 }
 
+
 function changeToNumArr(numbers)
 {
   const array = new Array;
@@ -30,7 +31,7 @@ function changeToOperatorsArr(operators)
   return array;
 }
 
-function mergeArrays(numbers, operators)
+export function mergeArrays(numbers, operators)
 {
   let array = new Array;
   for(let i = 0; i < numbers.length; i++)
