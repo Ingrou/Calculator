@@ -11,20 +11,25 @@ function addToCorrectArray(element)
 {
   let elementClassSecondPart = element.className.split(" ")[1];
 
-  if(numbersCount == 0 && element.innerText == "-" || minusFirst == true  && elementClassSecondPart == "--numberSign")
+  if(numbersCount == 0 && operatorsCount == 0 && element.innerText == "-"
+  || minusFirst == true  && elementClassSecondPart == "--numberSign")
   {
     if(minusFirst == false)
     {
       numberArray[numberArrayCount - 1] = ["-"];
       minusFirst = true;
       console.log(numberArray);
+
+      console.log("FROM MINUS FALSE");
     }
-    else if(minusFirst == true)
+    else if(minusFirst == true && elementClassSecondPart == "--numberSign")
     {
       numberArray[numberArrayCount - 1][0] += (element.innerText);
       numbersCount++;
       minusFirst = false;
       console.log(numberArray);
+
+      console.log("FROM MINUS TRUE");
     }
   }
   else if((elementClassSecondPart == "--numberSign" && semiFirst == false))
@@ -53,7 +58,7 @@ function addToCorrectArray(element)
       semiMemory = numberArray[numberArrayCount - 1];
       semiFirst = true;
     }
-    else if(semiFirst == true)
+    else if(semiFirst == true && elementClassSecondPart == "--numberSign")
     {
       numberArray[numberArrayCount -1] = [ parseFloat(semiMemory + '.' + element.innerText) ];
       numbersCount++;
